@@ -11,8 +11,12 @@ class GetRequester:
         resp.raise_for_status()
         return json.loads(resp.text)
     
-    def get_response_body(self, search_term):
+    def get_response_body(self, search_term=None):
         people = self.load_json()
+
+        if search_term is None:
+            return people
+        
         term = search_term.strip().lower()
 
         match = next((p for p in people if term in p.get('name', '').lower()), None)
