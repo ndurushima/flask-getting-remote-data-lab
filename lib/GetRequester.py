@@ -11,7 +11,7 @@ class GetRequester:
         resp.raise_for_status()
         return json.loads(resp.text)
     
-    def get_response_body(self, search_term: str) -> str:
+    def get_response_body(self, search_term):
         people = self.load_json()
         term = search_term.strip().lower()
 
