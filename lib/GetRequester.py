@@ -6,15 +6,9 @@ class GetRequester:
     def __init__(self, url="https://learn-co-curriculum.github.io/json-site-example/endpoints/people.json"):
         self.url = url
 
-    def get_response_body(self, search_term):
-        people = self.load_json()
-        term = search_term.strip().lower()
-
-        match = next((p for p in people if term in p.get('name', '').lower()), None)
-
-        name = match.get('name', 'Unknown')
-        occupation = match.get('occupation', 'Unknown')
-        return f"Employee Name: {name}\nOccupation: {occupation}"
+    def get_response_body(self):
+        resp = requests.get(self.url)
+        return resp.content
 
     def load_json(self):
         resp = requests.get(self.url)
