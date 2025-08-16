@@ -6,7 +6,7 @@ class GetRequester:
     def __init__(self, url="https://learn-co-curriculum.github.io/json-site-example/endpoints/people.json"):
         self.url = url
 
-    def get_response_body(self, search_term: str) -> str:
+    def get_response_body(self, search_term):
         people = self.load_json()
         term = search_term.strip().lower()
 
